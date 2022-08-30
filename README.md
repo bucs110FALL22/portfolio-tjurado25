@@ -10,8 +10,8 @@ Welcome to CS 110. I look forward to working with you this semester. This is you
 
 ## Student Info - MUST BE COMPLETED
 
-Preferred Name:
+Preferred Name: Ty 
 
-Discord username:
+Discord username: tj25#5036
 
-REPL url:
+REPL url: https://replit.com/@tjurado1/LavenderOnlyNormalform#main.py
