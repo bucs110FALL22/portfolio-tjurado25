@@ -21,7 +21,6 @@ class BrickBlock:
 class Cloud:
   def __init__(self):
     self.player_num=1
-    self.lives=1
     self.is_large = False
     self.color ="White"
     
