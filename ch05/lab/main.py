@@ -46,13 +46,20 @@ upper_limit = 20
 iters = {}
 count = 0
 max_so_far = 0
-scale = 5 
+scale = 10
 
 pygame.init()
-display = pygame.display.set_mode()
+display_width = 300
+display_height = 300
+display = pygame.display.set_mode([display_width, display_height])
 display.fill("red")
-font = pygame.font.Font(None, 35)
+font = pygame.font.Font(None, 20)
 pygame.display.flip()
+color = "blue"
+pos = (10,10)
+new_display = pygame.transform.flip(display, False, True)
+iters_new = {}
+display.fill([0, 255, 0])
 
 for n in range(2, upper_limit + 1):
   count += 1
@@ -62,40 +69,26 @@ for n in range(2, upper_limit + 1):
     n = n * 3 + 1
     iters[n] = count
     print(iters)
-    iters_graph = iters, count 
-
-
-
-iters[max_val * scale] = count * scale
-
-coordinates = list(iters.items())
-
-if len(coordinates) > 1:
-  values = pygame.draw.lines(display, "blue", False, coordinates)
-  display.blit(pygame.transform.flip(display, False, True), (0, 0))
-
-if count > max_so_far:
-  max_value = max_so_far
-  max_so_far = count
-
-msg = font.render(f"(max_val) iterations", True, "Orange")
-display.blit(msg, (scale, scale))
-
-pygame.display.flip()
-
-
-  
-  
-  
-
-
-
-
-
     
-  
-  
-  
-
 
   
+
+  iters_new[n * scale] = display_height-count*scale
+
+  coordinates = list(iters_new.items())
+
+  if count > max_so_far:
+    max_so_far = count
+    max_val = str(max_so_far)
+    display.blit(new_display, (0,0))
+    msg = font.render("Max value of iterations is "+ max_val, True, color)
+  display.blit(msg, pos)
+
+  if len(coordinates) > 1:
+    pygame.draw.lines(display, color, False, coordinates)
+    pygame.time.wait(1000)
+    pygame.display.flip()
+
+print(iters)
+pygame.time.wait(1000)
+
